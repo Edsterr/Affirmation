@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html>
+    <head lang="en">
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <title>Affirmation</title>
+    </head>
+    <body>
+        <div class="page-header">
+            <h1><a href="/">AffirmationTM</a></h1>
+        </div>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                {% block content %}
+                {% endblock %}
+                </div>
+            </div>
+            <br/>
+            <hr/>
+            <div>
+                <ul>
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'data' %}">Input Data</a></li>
+                    <li><a href="{% url 'account' %}">Account</a></li>
+                    <li><a href="{% url 'pastdata' %}">History of Data</a></li>
+                    <li><a href="{% url 'treatment' %}">Current Treatment</a></li>
+                    <li><a href="{% url 'resources' %}">Resources</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    {% else %}
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                    <li><a href="{% url 'login' %}">Log In</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

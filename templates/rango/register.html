@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+{% extends 'rango/base.html' %}
+
+{% block content %}
+
+  <h1>Register</h1>
+  <div>
+    {% if registered %}
+    <strong>You're registered</strong><br/>
+    {% else %}
+    <strong>Required fields are marked *</strong>
+    <br/>
+    <br/>
+    <form id="user_form" method="post" action="{% url 'register' %}"
+          enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    {{ user_form.as_p }}
+    {{ profile_form.as_p}}
+
+    <input type="submit" name="submit" value="Register" />
+  </form>
+  {% endif %}
+  </div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+{% extends 'rango/base.html' %}
+
+{% block content %}
+
+    <h1> Your account </h1>
+    <h2> General account information </h2>
+    <div>
+      <table style="width:100%">
+       <tr>
+         <td>Legal Name</td>
+         <td>{{ user_data.legalName }}</td>
+       </tr>
+       <tr>
+         <td>Known by Name</td>
+         <td>{{ user_data.knownName }}</td>
+       </tr>
+       <tr>
+         <td>Date of Birth</td>
+         <td>{{ user_data.birthDate }}</td>
+       </tr>
+       <tr>
+         <td>Gender</td>
+         <td>{{ user_data.gender }}</td>
+       </tr>
+       <tr>
+         <td>Assigned Gender at Birth</td>
+         <td>{{ user_data.birthGender }}</td>
+       </tr>
+      </table>
+    </div>
+    <br/>
+    <strong>Key Info Goes Here</strong>
+    <br/>-----
+    <br/>-----
+    <br/>-----
+
+{% endblock %}}
