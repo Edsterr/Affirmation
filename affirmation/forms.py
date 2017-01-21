@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from rango.models import Page, Category, UserProfile, data
+from affirmation.models import Page, Category, UserProfile, data
 
 class CategoryForm(forms.ModelForm):
     name = forms.CharField(max_length=128,

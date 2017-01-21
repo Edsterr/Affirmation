@@ -1,6 +1,6 @@
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE',
-                      'tango_with_django.settings')
+                      'affirmation.settings')
 
 import django
 django.setup()
@@ -55,5 +55,5 @@ def add_cat(name):
     return c
 
 if __name__ == '__main__':
-    print("Starting Rango ppulation script...")
+    print("Starting affirmation population script...")
     populate()

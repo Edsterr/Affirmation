@@ -1,4 +1,4 @@
-"""tango_with_django URL Configuration
+"""affirmation URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.10/topics/http/urls/
@@ -16,13 +16,13 @@ Including another URLconf
 from django.conf.urls import url
 from django.conf.urls import include
 from django.contrib import admin
-from rango import views
+from affirmation import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^rango/', include('rango.urls')),
+    url(r'^affirmation/', include('affirmation.urls')),
     # above maps any URLs starting
-    # with rango/ to be handled by
-    # the rango application
+    # with affirmation/ to be handled by
+    # the affirmation application
     url(r'^admin/', admin.site.urls),
 ]

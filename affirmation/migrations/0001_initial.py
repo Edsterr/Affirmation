@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=128)),
                 ('url', models.URLField()),
                 ('views', models.IntegerField(default=0)),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='rango.Category')),
+                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='affirmation.Category')),
             ],
         ),
     ]

@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('rango', '0002_auto_20170121_0337'),
+        ('affirmation', '0002_auto_20170121_0337'),
     ]
 
     operations = [

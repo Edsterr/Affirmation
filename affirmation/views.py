@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from rango.models import Category, Page, UserProfile
-from rango.forms import CategoryForm, UserForm, UserProfileForm, dataForm
+from affirmation.models import Category, Page, UserProfile
+from affirmation.forms import CategoryForm, UserForm, UserProfileForm, dataForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
@@ -34,7 +34,7 @@ def register(request):
           profile_form = UserProfileForm()
 
      return render(request,
-                   'rango/register.html',
+                   'affirmation/register.html',
                    {'user_form': user_form,
                     'profile_form': profile_form,
                     'registered': registered})
@@ -54,7 +54,7 @@ def user_login(request):
                print("Invalid login details: {0}, {1}".format(username, password))
                return HttpResponse("Invalid login details supplied")
      else:
-          return render(request, 'rango/login.html', {})
+          return render(request, 'affirmation/login.html', {})
 
 @login_required
 def user_logout(request):
@@ -65,11 +65,11 @@ def user_logout(request):
 def account(request):
      user_data = UserProfile.objects.get(user=request.user)
      context = {'user_data':user_data}
-     return render(request, 'rango/account.html',context)
+     return render(request, 'affirmation/account.html',context)
 
 def index(request):
      context_dict = {'boldmessage': "I'm really bad at design. Please someone help"}
-     return render(request, 'rango/index.html', context_dict)
+     return render(request, 'affirmation/index.html', context_dict)
 
 def data(request):
      if request.method == 'POST':
@@ -83,14 +83,14 @@ def data(request):
      else:
           data_form = dataForm()
      return render(request,
-                   'rango/data.html',
+                   'affirmation/data.html',
                    {'data_form': data_form})
 
 def pastData(request):
-     return render(request, 'rango/pastData.html', {})
+     return render(request, 'affirmation/pastData.html', {})
 
 def treatment(request):
-     return render(request, 'rango/treatment.html', {})
+     return render(request, 'affirmation/treatment.html', {})
 
 def resources(request):
-     return render(request, 'rango/resources.html', {})
+     return render(request, 'affirmation/resources.html', {})
