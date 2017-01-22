@@ -1,7 +1,14 @@
+html{
+  height: 100%;
+  width: 100%;
+}
+
 .page-header {
     background-color: #ff9400;
-    margin-top: 0;
-    padding: 20px 20px 20px 40px;
+    margin: 0;
+    padding: 1px 20px 16px 35px;
+    width: 100%;
+    border: 0;
 }
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
@@ -11,11 +18,12 @@
 }
 
 .content {
-    margin-left: 40px;
+    margin-left: 15%;
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Lobster', cursive;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
 }
 
 .date {
@@ -43,4 +51,40 @@ h1, h2, h3, h4 {
 
 .post h1 a, .post h1 a:visited {
     color: #000000;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 15%;
+  background-color: #f1f1f1;
+  height: 100%; /* Full height */
+  position: fixed; /* Make it stick, even on scroll */
+  overflow: auto; /* Enable scrolling if the sidenav has too much content */
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+    background-color: #555;
+    color: white;
+}
+
+.log-in{
+  position: relative;
+  bottom: 10px;
+  float: right;
+  color: #fff;
+}
+
+.log-in a{
+  color: inherit;
+  text-decoration: underline;
 }
