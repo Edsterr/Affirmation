@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
-from affirmation.models import Page, Category, UserProfile, data
+from affirmation.models import Page, Category, UserProfile, Data
+from conf import settings
+from time import strftime
 
 class CategoryForm(forms.ModelForm):
     name = forms.CharField(max_length=128,
@@ -34,8 +36,12 @@ class PageForm(forms.ModelForm):
             return cleaned_data
 
 class dataForm(forms.ModelForm):
+    date = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS,
+                           initial = strftime("%d/%m/%Y"))
+
     class Meta:
-        model = data
+        model = Data
+        exclude = ('user',)
         fields = ('date','treatment','notes','satisfaction',)
     
 class UserForm(forms.ModelForm):
@@ -49,6 +55,7 @@ class UserForm(forms.ModelForm):
             }
 
 class UserProfileForm(forms.ModelForm):
+    birthDate = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS)
     class Meta:
         model = UserProfile
         fields = ('legalName', 'knownName', 'birthDate', 'gender', 'birthGender')

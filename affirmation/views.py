@@ -1,11 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.http import HttpResponse
-from affirmation.models import Category, Page, UserProfile
+from affirmation.models import Category, Page, UserProfile, Data
 from affirmation.forms import CategoryForm, UserForm, UserProfileForm, dataForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
+from chartit import DataPool, Chart
 
 def register(request):
      registered = False
@@ -72,11 +73,18 @@ def index(request):
      return render(request, 'affirmation/index.html', context_dict)
 
 def data(request):
-     if request.method == 'POST':
-          data_form = dataForm(request.POST)
 
-          if data_form.is_valid():
-               data_form.save()
+     user_id = UserProfile.objects.get(user=request.user)
+
+     form = dataForm()
+     
+     if request.method == 'POST':
+          form = dataForm(request.POST)
+
+          if form.is_valid():
+               data = form.save(commit=False)
+               data.user=user_id
+               data.save()
                return HttpResponseRedirect("")
           else:
                print(data_form.errors)
@@ -87,7 +95,39 @@ def data(request):
                    {'data_form': data_form})
 
 def pastData(request):
-     return render(request, 'affirmation/pastData.html', {})
+     #Step 1: Create a DataPool with the data we want to retrieve.
+    treatmentdata = \
+        DataPool(
+           series=
+            [{'options': {
+               'source': Data.objects.all()},
+              'terms': [
+                'date',
+                'satisfaction']}
+             ])
+
+    #Step 2: Create the Chart object
+    cht = Chart(
+            datasource = treatmentdata,
+            series_options =
+              [{'options':{
+                  'type': 'line',
+                  'stacking': False},
+                'terms':{
+                  'date': [
+                    'satisfaction']
+                  }}],
+            chart_options =
+              {'title': {
+                   'text': 'Satisfaction v Time'},
+               'xAxis': {
+                    'title': {
+                       'text': 'Month number'}}})
+
+    #Step 3: Send the chart object to the template.
+    return render_to_response('affirmation/pastData.html', {'weatherchart': cht})
+
+    #return render(request, 'affirmation/pastData.html', {})
 
 def treatment(request):
      return render(request, 'affirmation/treatment.html', {})

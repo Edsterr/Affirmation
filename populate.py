@@ -1,10 +1,10 @@
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE',
-                      'affirmation.settings')
+                      'conf.settings')
 
 import django
 django.setup()
-from rango.models import Category,Page
+from affirmation.models import Category,Page
 
 def populate():
 

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'chartit',
     'affirmation',
 ]
 
@@ -72,6 +73,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'conf.wsgi.application'
 
+#dd/mm/yyyy and dd/mm/yy date & datetime input field settings
+USE_L10N = True
+DATE_INPUT_FORMATS = ['%d-%m-%Y', '%d/%m/%Y', '%d/%m/%y', '%d %b %Y',
+                      '%d %b, %Y', '%d %b %Y', '%d %b, %Y', '%d %B, %Y',
+                      '%d %B %Y']
+DATETIME_INPUT_FORMATS = ['%d/%m/%Y %H:%M:%S', '%d/%m/%Y %H:%M', '%d/%m/%Y',
+                          '%d/%m/%y %H:%M:%S', '%d/%m/%y %H:%M', '%d/%m/%y',
+                          '%Y-%m-%d %H:%M:%S', '%Y-%m-%d %H:%M', '%Y-%m-%d']
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
