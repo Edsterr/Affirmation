@@ -5,13 +5,18 @@
 {% block content %}
 
     <h1> Login</h1>
+    <p>Login to access the other pages, or alternatively, register <a href="{% url 'register' %}">here</a></p>
     <form id="login_form" method="post" action="{% url 'login' %}">
       {% csrf_token %}
-      Username: <input type="text" name="username" value="" size="50" />
-      <br/>
-      Password: <Input type="password" name="password" value="" size="50" />
-      <br/>
-      <input type="submit" value="submit" />
+      <table style="width:100%">
+        <tr>
+          <td>Username:</td> <td><input type="text" name="username" value="" size="50" /></td>
+        </tr>
+        <tr>
+          <td>Password:</td> <td><Input type="password" name="password" value="" size="50" /></td>
+        </tr>
+      </table>
+      <input type="submit" value="Submit" /><p>  </p><a href="static"
     </form>
 
 {% endblock %}

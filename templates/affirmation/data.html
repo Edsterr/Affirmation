@@ -9,8 +9,9 @@
           enctype="multipart/form-data">
 
     {% csrf_token %}
-
-    {{ data_form.as_p }}
+    <table style="width:100%">
+    {{ data_form.as_table }}
+    </table>
 
     <input type="submit" name="submit" value="Submit" />
   </form>

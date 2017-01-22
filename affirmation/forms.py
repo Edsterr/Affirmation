@@ -45,22 +45,24 @@ class dataForm(forms.ModelForm):
         fields = ('date','treatment','notes','satisfaction',)
     
 class UserForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput, help_text="*")
+    password = forms.CharField(widget=forms.PasswordInput, label = "Password (*)")
     class Meta:
         model = User
         fields = ('username', 'email', 'password')
-        help_texts = {
-            'username': "*",
-            'email': "*",
+        labels = {
+            'username': "Username (*)",
+            'email': "Email Address",
             }
+        help_texts = {
+            'username': ""
+        }
 
 class UserProfileForm(forms.ModelForm):
-    birthDate = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS, help_text="*")
+    birthDate = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS,label="Birth Date (*)")
     class Meta:
         model = UserProfile
         fields = ('legalName', 'knownName', 'birthDate', 'gender', 'birthGender')
-        help_texts = {
-            'legalName': "*",
-            'birthDate': "*",
-            'birthGender': "*",
+        labels = {
+            'legalName': "Legal Name (*)",
+            'birthGender': "Birth Gender (*)",
         }

@@ -3,6 +3,8 @@
 {% load staticfiles %}
 
 <html>
+
+    {% block head %}
     <head lang="en">
         <meta charset="UTF-8" />
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -11,9 +13,11 @@
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
         <title>Affirmation</title>
     </head>
+    {% endblock %}
+
     <body>
         <div class="page-header">
-            <h1><a href="/">AffirmationTM</a></h1>
+            <h1><a href="/">Affirmation</a></h1>
             <div class="log-in">
               {% if user.is_authenticated %}
               <a href="{% url 'logout' %}">Log Out</a>
@@ -24,13 +28,15 @@
               {% endif %}
             </div>
         </div>
-        <ul>
-            <li><a href="{% url 'index' %}">Home</a></li>
-            <li><a href="{% url 'data' %}">Input Data</a></li>
-            <li><a href="{% url 'account' %}">Account</a></li>
-            <li><a href="{% url 'pastdata' %}">History of Data</a></li>
+        <ul class="Menu">
+            <li class="menu"><a href="{% url 'index' %}">Home</a></li>
+            <li class="menu"><a href="{% url 'data' %}">Input Data</a></li>
+            <li class="menu"><a href="{% url 'account' %}">Account</a></li>
+            <li class="menu"><a href="{% url 'pastdata' %}">History of Data</a></li>
+            <!--
             <li><a href="{% url 'treatment' %}">Current Treatment</a></li>
             <li><a href="{% url 'resources' %}">Resources</a></li>
+          -->
         </ul>
         <div class="content container">
             <div class="row">
@@ -41,28 +47,6 @@
             </div>
             <br/>
             <hr/>
-            <div>
-<<<<<<< HEAD
-                <ul>
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li><a href="{% url 'data' %}">Input Data</a></li>
-                    <li><a href="{% url 'account' %}">Account</a></li>
-                    <li><a href="{% url 'pastdata' %}">History of Data</a></li>
-                    <!--
-                    <li><a href="{% url 'treatment' %}">Current Treatment</a></li>
-                  -->
-                    <li><a href="{% url 'resources' %}">Resources</a></li>
-                    {% if user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}">Log Out</a></li>
-                    {% else %}
-                    <li><a href="{% url 'register' %}">Register</a></li>
-                    <li><a href="{% url 'login' %}">Log In</a></li>
-                    {% endif %}
-                </ul>
-=======
-
->>>>>>> f1e7277f3327010d65e865e15546834aa030b5f5
-            </div>
         </div>
     </body>
 </html>

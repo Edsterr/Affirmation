@@ -24,6 +24,7 @@ html{
 h1, h2, h3, h4 {
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
+  font-variant-ligatures: none;
 }
 
 .date {
@@ -53,7 +54,7 @@ h1, h2, h3, h4 {
     color: #000000;
 }
 
-ul {
+.Menu {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -64,7 +65,7 @@ ul {
   overflow: auto; /* Enable scrolling if the sidenav has too much content */
 }
 
-li a {
+.menu a {
     display: block;
     color: #000;
     padding: 8px 16px;
@@ -72,7 +73,7 @@ li a {
 }
 
 /* Change the link color on hover */
-li a:hover {
+.menu a:hover {
     background-color: #555;
     color: white;
 }
@@ -85,6 +86,7 @@ li a:hover {
 }
 
 .log-in a{
+  font-size: 16px;
   color: inherit;
   text-decoration: underline;
 }

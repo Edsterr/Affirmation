@@ -2,24 +2,36 @@
 
 {% extends 'affirmation/base.html' %}
 
-{% block content %}
+{% load staticfiles %}
 
-<head>
-<!-- code to include the highcharts and jQuery libraries goes here -->
-<!-- load_charts filter takes a comma-separated list of id's where -->
-<!-- the charts need to be rendered to                             -->
-<script src ="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-<script type ="text/javascript" src ="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+{% block head %}
+<head lang ="en">
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+  <title>Affirmation</title>
+  <!-- code to include the highcharts and jQuery libraries goes here -->
+  <!-- load_charts filter takes a comma-separated list of id's where -->
+  <!-- the charts need to be rendered to                             -->
+  <script src ="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+  <script type ="text/javascript" src ="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 
 
-<script type="text/javascript" src="/static/js/highcharts/highcharts.js"></script>
+  <script type="text/javascript" src="/static/js/highcharts/highcharts.js"></script>
 
-    <h1> Previously Entered Data </h1>
-    
-{% load chartit %}
-{{ weatherchart|load_charts:"container" }}
+
+  {% load chartit %}
+  {{ weatherchart|load_charts:"container" }}
 </head>
+{% endblock %}
+
+{% block content %}
 <body>
+
+      <h1> Previously Entered Data </h1>
+
 <div id='container'> Chart will be rendered here </div>
 </body>
 

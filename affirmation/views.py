@@ -97,8 +97,7 @@ def data(request):
 
 @login_required
 def pastData(request):
-    print(UserProfile.objects.get(user=request.user).user_id)
-    print(Data.objects.all())
+    print(request.user.is_authenticated())
     s=Data.objects.filter(user=UserProfile.objects.get(user=request.user))
      #Step 1: Create a DataPool with the data we want to retrieve.
     treatmentdata = \
@@ -130,7 +129,7 @@ def pastData(request):
                        'text': 'Time'}}})
 
     #Step 3: Send the chart object to the template.
-    return render_to_response('affirmation/pastData.html', {'weatherchart': cht})
+    return render(request, 'affirmation/pastData.html', {'weatherchart': cht})
 
     #return render(request, 'affirmation/pastData.html', {})
 
