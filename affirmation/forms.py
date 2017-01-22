@@ -55,7 +55,7 @@ class UserForm(forms.ModelForm):
             }
 
 class UserProfileForm(forms.ModelForm):
-    birthDate = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS)
+    birthDate = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS, help_text="*")
     class Meta:
         model = UserProfile
         fields = ('legalName', 'knownName', 'birthDate', 'gender', 'birthGender')

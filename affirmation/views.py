@@ -72,6 +72,7 @@ def index(request):
      context_dict = {'boldmessage': "I'm really bad at design. Please someone help"}
      return render(request, 'affirmation/index.html', context_dict)
 
+@login_required
 def data(request):
 
      user_id = UserProfile.objects.get(user=request.user)
@@ -94,13 +95,17 @@ def data(request):
                    'affirmation/data.html',
                    {'data_form': data_form})
 
+@login_required
 def pastData(request):
+    print(UserProfile.objects.get(user=request.user).user_id)
+    print(Data.objects.all())
+    s=Data.objects.filter(user=UserProfile.objects.get(user=request.user))
      #Step 1: Create a DataPool with the data we want to retrieve.
     treatmentdata = \
         DataPool(
            series=
             [{'options': {
-               'source': Data.objects.all()},
+               'source': s},
               'terms': [
                 'date',
                 'satisfaction']}
@@ -119,10 +124,10 @@ def pastData(request):
                   }}],
             chart_options =
               {'title': {
-                   'text': 'Satisfaction v Time'},
+                   'text': s[0].treatment},
                'xAxis': {
                     'title': {
-                       'text': 'Month number'}}})
+                       'text': 'Time'}}})
 
     #Step 3: Send the chart object to the template.
     return render_to_response('affirmation/pastData.html', {'weatherchart': cht})

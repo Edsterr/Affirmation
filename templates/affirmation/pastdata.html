@@ -13,13 +13,14 @@
 
 
 <script type="text/javascript" src="/static/js/highcharts/highcharts.js"></script>
+
+    <h1> Previously Entered Data </h1>
+    
 {% load chartit %}
 {{ weatherchart|load_charts:"container" }}
 </head>
 <body>
 <div id='container'> Chart will be rendered here </div>
 </body>
-
-    <h1> Previously Entered Data </h1>
 
 {% endblock %}

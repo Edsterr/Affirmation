@@ -30,7 +30,9 @@
                     <li><a href="{% url 'data' %}">Input Data</a></li>
                     <li><a href="{% url 'account' %}">Account</a></li>
                     <li><a href="{% url 'pastdata' %}">History of Data</a></li>
+                    <!--
                     <li><a href="{% url 'treatment' %}">Current Treatment</a></li>
+                  -->
                     <li><a href="{% url 'resources' %}">Resources</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'logout' %}">Log Out</a></li>
