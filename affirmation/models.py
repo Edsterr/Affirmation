@@ -28,17 +28,6 @@ class Page(models.Model):
     def __str__(self):
         return self.title
 
-class data(models.Model):
-    SATISFACTION_CHOICE=[]
-    for i in range(1,11):
-        SATISFACTION_CHOICE+=[(i,i)]
-    date = models.DateField(default=strftime("%d/%m/%Y"))
-    treatment = models.CharField(max_length=64)
-    notes = models.TextField(blank=True)
-    satisfaction = models.IntegerField(choices=SATISFACTION_CHOICE)
-    def __str__(self):
-        return self.treatment
-    
 class UserProfile(models.Model):
     GENDER_CHOICE=(
         ('Male', 'Male'),
@@ -54,3 +43,16 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
     
+class Data(models.Model):
+    user = models.ForeignKey('UserProfile',null=True)
+    SATISFACTION_CHOICE=[]
+    for i in range(0,11):
+        SATISFACTION_CHOICE+=[(i,i)]
+    date = models.DateField(default=strftime("%d/%m/%Y"))
+    treatment = models.CharField(max_length=64)
+    notes = models.TextField(blank=True)
+    satisfaction = models.IntegerField(choices=SATISFACTION_CHOICE, default=0)
+    def __str__(self):
+        return self.treatment
+    
+
